@@ -1,0 +1,26 @@
+
+    #  For the ancestors() method performance  this is DFS on a graph so
+    #           time complexity  O(V)   V=number of nodes
+    #           spece complexity O(V)    size of the result which is order of V
+
+
+#  Discussion:  for bisectors we need to know the number of ancestors at every nodes.
+    #   a naive solution might be to call ancestors() at every node and count
+    #   but this is at least O(V^2) time
+    #   my optimization is to first do a topoligical sort of the graph.
+    #   we are guaranteed graph is acyclic and has a possible topological ordering
+    #   with the top sort  we can progress from the roots down to the leaves.
+    #  the count of ancestors for any particular node is the the number of direct
+    #  ancestors plus their the number of ancestors we've already calcuated there.
+
+    #  I implemented topological sort via DFS  but Kahns Algorithm is a possiblity
+    #  Topological Sort is  O(V+E) time complexity
+
+    #  My final step is to calculate the group of bisectors but iterating thru the
+    #  dictionary hash that counts num_ancestors at each node   O(V)
+
+    # total time here   O(V+E)
+
+    #   its possible to optimize this code tocount the number of ancestors during the Topological
+    #   Sort phase, esp if you are using Kahns algorithm which uses  indeg/outdegree
+    #  however this was easier for me to implement and reason about within the time constraints
