@@ -1,17 +1,38 @@
+README
 
-    #  For the ancestors() method performance  this is DFS on a graph so
-    #           time complexity  O(V)   V=number of nodes
-    #           spece complexity O(V)    size of the result which is order of V
+
+test run example
+
+$ python -m unittest
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 0.000s
+
+OK
+
+
+This project has no external dependencies outside the the python stdlib
+Developed using Python 3.10.4
+
+
+Initializing and Parsing the DAG is O(V+E) time and space complexity  V= num nodes   E= num edges
+
+Calculating leaves()  is O(V) time and space  as we use in_degree hash to find
+
+
+For the ancestors() method performance  this is DFS on a graph so
+    #           time complexity  O(V+E)   V=number of nodes  E=numberof ehdge
+    #           spece complexity O(V+E)    size of the result which is order of V
 
 
 #  Discussion:  for bisectors we need to know the number of ancestors at every nodes.
     #   a naive solution might be to call ancestors() at every node and count
-    #   but this is at least O(V^2) time
+    #   but this is at least O(V^2 E) time
     #   my optimization is to first do a topoligical sort of the graph.
     #   we are guaranteed graph is acyclic and has a possible topological ordering
     #   with the top sort  we can progress from the roots down to the leaves.
     #  the count of ancestors for any particular node is the the number of direct
-    #  ancestors plus their the number of ancestors we've already calcuated there.
+    #  ancestors plus their the number of ancestors we've already pre-calcuated at each direct ancestor.
 
     #  I implemented topological sort via DFS  but Kahns Algorithm is a possiblity
     #  Topological Sort is  O(V+E) time complexity

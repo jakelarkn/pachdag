@@ -12,8 +12,11 @@ class DAG:
 
     def __init__(self, text):
         self.graph = {}
+        self.in_degree = defaultdict(int)
+        self.out_degree = defaultdict(int)
         self._parse(text)
 
+    # parse and validate the input text
     def _parse(self, text: str):
         text = text.strip()
         if text == "":
